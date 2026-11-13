@@ -1,0 +1,91 @@
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.option:hover {
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--border));
+}
+
+.option:has(input:focus-visible) {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.optionChecked,
+.optionChecked:hover {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+
+.optionBody {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.optionName {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.optionDescription {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.optionPrice {
+  font-weight: 650;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.freePrice {
+  color: var(--success);
+}
+
+/* Indian food-label convention: green square for veg, brown/red for non-veg. */
+.diet {
+  width: 14px;
+  height: 14px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid;
+  border-radius: 2px;
+}
+
+.diet::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.veg {
+  color: #16a34a;
+}
+
+.nonVeg {
+  color: #b45309;
+}
+
+.dietPlaceholder {
+  width: 14px;
+}

@@ -1,0 +1,230 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Layout switcher */
+.layoutSwitcher {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.confirm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--info-soft);
+  border: 1px solid color-mix(in srgb, var(--info) 30%, transparent);
+  font-size: 14px;
+}
+
+.confirm p {
+  flex: 1 1 240px;
+}
+
+.confirmActions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-size: 13px;
+}
+
+.legendGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendDetail {
+  color: var(--text-muted);
+}
+
+.swatch {
+  --seat: 18px;
+  border-width: 2px;
+  border-radius: 5px 5px 4px 4px;
+  pointer-events: none;
+}
+
+/* Details */
+.details {
+  position: sticky;
+  top: 12px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 12px 20px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(8px);
+  min-height: 78px;
+}
+
+.choosingFor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 20px;
+  border-right: 1px solid var(--border);
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.choosingName {
+  font-weight: 650;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.seatInfoSlot {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.seatInfo {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.seatInfo > div {
+  min-width: 0;
+}
+
+.seatInfoTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-weight: 650;
+}
+
+.seatInfoMeta,
+.seatHint {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.seatInfoMeta {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.seatInfoMeta::first-letter {
+  text-transform: uppercase;
+}
+
+.seatInfoPrice {
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.seatInfoEmpty {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.seatHint {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hint-success {
+  color: var(--success);
+}
+
+.hint-brand {
+  color: var(--brand-strong);
+}
+
+.hint-muted {
+  color: var(--text-muted);
+}
+
+.categoryChip {
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 650;
+  border: 1px solid;
+}
+
+.chip-standard {
+  background: var(--cat-standard-bg);
+  border-color: var(--cat-standard-border);
+}
+
+.chip-preferred {
+  background: var(--cat-preferred-bg);
+  border-color: var(--cat-preferred-border);
+}
+
+.chip-premium {
+  background: var(--cat-premium-bg);
+  border-color: var(--cat-premium-border);
+}
+
+.chip-extraLegroom {
+  background: var(--cat-extraLegroom-bg);
+  border-color: var(--cat-extraLegroom-border);
+}
+
+@media (max-width: 600px) {
+  /* Not pinned on phones, where it would cover too much of the cabin. */
+  .details {
+    position: static;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .choosingFor {
+    border-right: 0;
+    padding-right: 0;
+  }
+
+  .seatInfoPrice {
+    font-size: 18px;
+  }
+}

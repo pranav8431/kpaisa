@@ -1,0 +1,217 @@
+/* The viewport is the size container; seats scale with its width. */
+.viewport {
+  container-type: inline-size;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.cabin {
+  --label: 24px;
+  --aisle: 24px;
+  --gap: 6px;
+  --pad: 18px;
+  --seat: clamp(
+    24px,
+    calc(
+      (100cqi - 2px - 2 * var(--pad) - var(--label) - var(--aisle-count) * var(--aisle) -
+          (var(--seat-count) + var(--aisle-count)) * var(--gap)) / var(--seat-count)
+    ),
+    44px
+  );
+
+  width: fit-content;
+  margin-inline: auto;
+  padding: 0 var(--pad) 18px;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 120px 120px 28px 28px / 90px 90px 28px 28px;
+}
+
+@container (max-width: 420px) {
+  .cabin {
+    --label: 18px;
+    --aisle: 14px;
+    --gap: 4px;
+    --pad: 10px;
+  }
+}
+
+.nose,
+.tail {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.nose {
+  padding: 40px 0 14px;
+}
+
+.tail {
+  padding-top: 12px;
+}
+
+.row,
+.letterRow {
+  display: grid;
+  gap: var(--gap);
+  align-items: center;
+}
+
+.row + .row {
+  margin-top: var(--gap);
+}
+
+.letterRow {
+  margin-bottom: 6px;
+}
+
+.letter {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text-muted);
+}
+
+.rowNumber {
+  text-align: center;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.aisle {
+  height: 1px;
+}
+
+.exitMarker {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px calc(-1 * var(--pad) + 2px) 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--danger);
+}
+
+.exitMarker + .row {
+  margin-top: 0;
+}
+
+/* Seat */
+.seat {
+  position: relative;
+  width: var(--seat);
+  height: var(--seat);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 2px solid var(--seat-border);
+  border-radius: 9px 9px 6px 6px;
+  background: var(--seat-bg);
+  font-size: 13px;
+  font-weight: 700;
+  transition: transform 0.12s ease, background 0.12s, box-shadow 0.12s;
+}
+
+.cat-standard {
+  --seat-bg: var(--cat-standard-bg);
+  --seat-border: var(--cat-standard-border);
+}
+
+.cat-preferred {
+  --seat-bg: var(--cat-preferred-bg);
+  --seat-border: var(--cat-preferred-border);
+}
+
+.cat-premium {
+  --seat-bg: var(--cat-premium-bg);
+  --seat-border: var(--cat-premium-border);
+}
+
+.cat-extraLegroom {
+  --seat-bg: var(--cat-extraLegroom-bg);
+  --seat-border: var(--cat-extraLegroom-border);
+}
+
+/* Free seats carry a dashed border so “price” is not conveyed by colour alone. */
+.free {
+  border-style: dashed;
+}
+
+.available:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgb(16 24 40 / 15%);
+}
+
+.selected {
+  background: var(--brand);
+  border: 2px solid var(--brand);
+  color: var(--on-brand);
+  box-shadow: 0 0 0 3px var(--brand-soft), 0 4px 12px rgb(67 56 202 / 35%);
+}
+
+.assigned {
+  background: var(--other);
+  border: 2px solid var(--other);
+  color: var(--on-other);
+}
+
+.occupied {
+  background: var(--occupied-bg);
+  border: 2px solid var(--occupied-bg);
+  color: var(--occupied-fg);
+  cursor: not-allowed;
+}
+
+.occupiedIcon {
+  width: 45%;
+  height: 45%;
+}
+
+/* Loading & error */
+.skeletonSeat {
+  width: var(--seat);
+  height: var(--seat);
+  border-radius: 9px 9px 6px 6px;
+  background: linear-gradient(90deg, var(--border) 0%, var(--surface) 50%, var(--border) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 48px 16px;
+  text-align: center;
+  color: var(--danger);
+  background: var(--danger-soft);
+  border-radius: var(--radius);
+}
+
+.errorTitle {
+  font-weight: 650;
+  color: var(--text);
+}
+
+.errorMessage {
+  max-width: 340px;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}

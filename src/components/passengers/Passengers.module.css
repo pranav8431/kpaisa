@@ -1,0 +1,185 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  padding: 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--border));
+}
+
+.cardActive,
+.cardActive:hover {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 15%, transparent);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selectButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--other);
+  color: var(--on-other);
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.avatarActive {
+  background: var(--brand);
+  color: var(--on-brand);
+}
+
+.nameInput {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font-weight: 650;
+}
+
+.nameInput::placeholder {
+  color: var(--text);
+  opacity: 1;
+}
+
+.nameInput:hover,
+.nameInput:focus {
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+.nameInput:focus::placeholder {
+  color: var(--text-muted);
+}
+
+.activeTag {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: var(--on-brand);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 10px 0 0;
+  padding-left: 42px;
+  font-size: 14px;
+}
+
+.fact {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+}
+
+.fact dt {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fact dd {
+  margin: 0;
+  min-width: 0;
+}
+
+.factMeta {
+  margin-left: 6px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.factText {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.factEmpty {
+  color: var(--text-muted);
+}
+
+.factPrice {
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.factAction {
+  margin-right: -8px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+/* On narrow screens passengers become a horizontally scrollable strip. */
+@media (max-width: 600px) {
+  .list {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: -14px;
+    padding: 2px 14px 6px;
+    scroll-padding-inline: 14px;
+  }
+
+  .card {
+    flex: 0 0 min(280px, 82%);
+    scroll-snap-align: start;
+  }
+
+  .facts {
+    padding-left: 0;
+  }
+}
