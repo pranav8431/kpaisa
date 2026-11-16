@@ -18,6 +18,37 @@ npm run lint     # oxlint
 
 Add `?simulateError` to the URL to make the first seat-map request fail. This shows the error state and the retry button.
 
+## Screenshots
+
+### Desktop overview
+Three passengers are seated on Layout 1 (3–2). Passenger 1 has a paid meal. The pointer is over seat 7B, so the details panel shows that seat's price, category and position. The summary breaks the ₹900 total down by passenger.
+
+![Desktop overview with three passengers seated, a meal selected and the price summary](docs/screenshots/desktop-overview.png)
+
+### Layout 2 (2–3–2)
+The wide-body cabin, with two aisles and three passengers seated together in exit row 10.
+
+<img src="docs/screenshots/layout-2-3-2.png" alt="2–3–2 wide-body layout with three passengers seated in row 10" width="520">
+
+### Feedback and edge cases
+
+| Picking an occupied seat | Switching layout with seats assigned |
+| --- | --- |
+| ![Error message explaining that seat 3B is already taken](docs/screenshots/invalid-seat.png) | ![Confirmation shown before a layout switch clears seat assignments](docs/screenshots/layout-switch-confirm.png) |
+
+| Seat map failed to load (`?simulateError`) | Dark mode |
+| --- | --- |
+| ![Error state with a Try again button](docs/screenshots/error-state.png) | ![The app in dark mode](docs/screenshots/dark-mode.png) |
+
+### Mobile (390px wide)
+On a phone, passengers appear as a swipeable strip at the top. The seats shrink to fit the screen, and a sticky bar at the bottom always shows the total.
+
+<p>
+  <img src="docs/screenshots/mobile-top.png" alt="Mobile: passengers strip and layout switcher" width="240">
+  <img src="docs/screenshots/mobile-cabin.png" alt="Mobile: seat map fitting the screen width" width="240">
+  <img src="docs/screenshots/mobile-summary.png" alt="Mobile: meals and price summary" width="240">
+</p>
+
 ## Features
 
 - **Passengers.** Choose 1–6 passengers with the stepper. Each passenger has an editable name, and their card shows their seat, meal and prices. Click a card to make that passenger the one choosing a seat.
